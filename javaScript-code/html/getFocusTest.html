@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style type='text/css'>
+    #message {
+      font-weight: bold;
+    }
+  </style>
+
+  <script type='text/javascript'>
+    setInterval("CheckPageFocus()", 200);
+
+    function CheckPageFocus() {
+      var info = document.getElementById("message");
+      if (document.hasFocus()) {
+        info.innerHTML = "该页面获得了焦点.";
+      }
+      else {
+        info.innerHTML = "该页面没有获得焦点.";
+      }
+    }
+
+    function OpenWindow() {
+      window.open("http://developer.mozilla.org/", "mozdev",
+        "width=640, height=300, left=150, top=260");
+    }
+    function OpenWindow1() {
+      // 可以用document.activeElement判断
+      // document.activeElement表示当前活动的元素
+      // 查找你要判断的文本框
+      var myInput = document.getElementById('btn1');
+      var info = document.getElementById("message1");
+      if (myInput == document.activeElement) {
+        info.innerHTML = "获取焦点." + document.activeElement.id;
+
+      } else {
+        info.innerHTML = "未获取焦点." + document.activeElement.id;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  document.hasFocus 演示<br /><br />
+  <div id="message">等待用户操作</div><br />
+  <div id="message1">等待用户操作</div><br />
+  <button onclick="OpenWindow()">打开一个新窗口</button>
+  <input id="btn1" type="button" onclick="OpenWindow1()" value="百度一下1">
+  <input id="btn2" type="button" onclick="OpenWindow1()" value="百度一下2">
+</body>
+
+</html>

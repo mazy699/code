@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框模拟单选框</title>
+    <script type="text/javascript">
+        /*
+         * js实现checkbox模拟radio 并保留checkbox全取消
+         */
+        function onlyselectone(num) {
+            var cb1 = document.getElementById("cb1");
+            var cb2 = document.getElementById("cb2");
+            if(num==1){
+                if(cb1.checked){
+                    cb2.checked = false;
+                }
+            }else{
+                if (cb2.checked){
+                    cb1.checked = false;
+                }
+            }
+        }
+        var oldValue;
+        /*
+         * 获取下拉框改变前的值
+         */
+        function getOldValue(obj) {
+            for (i=0;i<obj.length;i++){
+                if (obj[i].selected){
+                    oldValue = obj.value;
+                }
+            }
+        }
+        /*
+         * 当下拉框从3变成其他值时，将description置空
+         */
+        function changeSelect() {
+            if (oldValue=="3"){
+                document.getElementById("description").value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <input type="checkbox" id="cb1" onclick="onlyselectone(1);">复选框1</input>
+    <input type="checkbox" id="cb2" onclick="onlyselectone(2);">复选框2</input>
+</div>
+<div>
+    <select id="codeValue" onclick="getOldValue(this);" onchange="changeSelect();">
+        <option value="1" selected="selected">11111</option>
+        <option value="2" >22222</option>
+        <option value="3" >33333</option>
+        <option value="4" >44444</option>
+    </select>
+    <input type="text" id="description">
+</div>
+</body>
+</html>
