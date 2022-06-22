@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+#test0 {
+left:100px;
+width:300px;
+margin:auto;
+border:medium;
+}
+#test {
+left:100px;
+width:300px;
+height:200px;
+overflow-y: auto;
+margin:auto;
+border:medium;
+}
+#ddd {
+height:800px;
+margin:auto;
+border:medium;
+zoom:0.97;
+}
+#test1 {
+position:absolute;
+top:400px;
+left:100px;
+}
+#test2 {
+position:absolute;
+top:600px;
+left:100px;
+}
+#test3 {
+position:absolute;
+top:850px;
+left:100px;
+}
+p {
+margin:auto;
+border:medium;
+}
+.thdid7 {
+background-color:#aaaaaa;
+padding:3px;
+border-top:2px solid;
+border-left:2px solid;
+border-right:2px solid;
+}
+</style>
+</head>
+<body >
+<div id="ddd">
+<button onclick="bbbb()" id="bbbb" title="回顶部">bbbbb</button>
+<div id="test0">
+<table>
+  <tr>
+    <th class="thdid7">Month</th>
+    <th class="thdid7">Savings</th>
+  </tr>
+</table>
+</div>
+<div id="test">
+<p><button onclick="topFunction(this)" id="myBtn1" title="回顶部">返回顶部1</button></p>
+<p><a name="aaaa" /><button onclick="topFunction1('#aaaa')" id="myBtnaaaa" title="回顶部">返回顶部aaaa</button></p>
+<p><button onclick="topFunction(this)" id="myBtn2" title="回顶部">返回顶部2</button></p>
+<p><button onclick="topFunction(this)" id="myBtn3" title="回顶部">返回顶部3</button></p>
+<p><button onclick="topFunction(this)" id="myBtn4" title="回顶部">返回顶部4</button></p>
+<p><a name="aaaa" /><button onclick="topFunction1('#aaaa')" id="myBtnaaaa1" title="回顶部">返回顶部aaaa1</button></p>
+<p><button onclick="topFunction(this)" id="myBtn5" title="回顶部">返回顶部5</button></p>
+<p><button onclick="topFunction(this)" id="myBtn6" title="回顶部">返回顶部6</button></p>
+<p><button onclick="topFunction(this)" id="myBtn7" title="回顶部">返回顶部7</button></p>
+<p><button onclick="topFunction(this)" id="myBtn8" title="回顶部">返回顶部8</button></p>
+<p><button onclick="topFunction(this)" id="myBtn9" title="回顶部">返回顶部9</button></p>
+<p><button onclick="topFunction(this)" id="myBtn10" title="回顶部">返回顶部10</button></p>
+<p><button onclick="topFunction(this)" id="myBtn11" title="回顶部">返回顶部11</button></p>
+<p><a name="aaaa" /><button onclick="topFunction1('#aaaa')" id="myBtnaaaa2" title="回顶部">返回顶部aaaa2</button></p>
+<p><div id="ok" onclick="topFunction(this)">asdfasdf</div></p>	
+<p><button onclick="topFunction(this)" id="myBtn12" title="回顶部">返回顶部12</button></p>
+<p><button onclick="topFunction(this)" id="myBtn13" title="回顶部">返回顶部13</button></p>
+<p><button onclick="topFunction(this)" id="myBtn14" title="回顶部">返回顶部14</button></p>
+<p><button onclick="topFunction(this)" id="myBtn15" title="回顶部">返回顶部15</button></p>
+<p><button onclick="topFunction(this)" id="myBtn16" title="回顶部">返回顶部16</button></p>
+<p><button onclick="topFunction(this)" id="myBtn17" title="回顶部">返回顶部17</button></p>
+<p><button onclick="topFunction(this)" id="myBtn18" title="回顶部">返回顶部18</button></p>
+</div>
+<div id="test1">
+<hr/>
+<p id="demo1"></p>
+</div>
+<div id="test2">
+<hr/>
+<p id="demo2">position:absolute;
+top:100px;
+border:1px solid;</p>
+</div>
+<div id="test3">
+<hr/>
+<p id="demo3">aaaaa
+zoom:0.97;</p>
+</div>
+</div>
+<script>
+function aaaa() {
+//location.href = "#aaaa";
+}
+function bbbb(){
+window.open("scroll1.html", "_blank", `width=2200px,height=950px,resizable=yes,scrollbars=yes,status=no`);
+}
+function topFunction(obj) {
+	var aaaa=document.getElementsByName("aaaa")[0];
+	//alert(bbbb.length);
+	testDiv = document.getElementById("test");
+	demo1 = document.getElementById("demo1");
+	//alert(document.getElementById("test").scrollTop);
+	//alert(document.getElementById("myBtn10").offsetTop);
+	//alert(document.getElementById("myBtn10").clientHeight);
+	//alert(document.getElementById('ok').position());
+	//alert('--------');
+	testDivtop = testDiv.getBoundingClientRect().top;
+	objtop = obj.getBoundingClientRect().top;
+	//aaaatop = aaaa.getBoundingClientRect().top;
+	scrollPoint = testDiv.scrollTop + (objtop - testDivtop) - 5;
+	demo1.innerHTML = "testDiv.getBoundingClientRect().top: " + testDivtop + "<br>obj.getBoundingClientRect().top: " + objtop + "<br>testDiv.scrollTop: " + testDiv.scrollTop + "<br>scrollPoint: " + scrollPoint+ "<br>(objtop - testDivtop): " + (objtop - testDivtop);
+	//if(objtop>testDivtop){
+	//	scrollPoint = testDiv.scrollTop - (objtop - testDivtop);
+	//}else{
+	//	scrollPoint = testDiv.scrollTop - (testDivtop - objtop);
+	//}
+    testDiv.scrollTop = scrollPoint;
+}
+function topFunction1(id) {
+	var aaaa=document.getElementsByName(id.substring(1))[0];
+	//alert(bbbb.length);
+	testDiv = document.getElementById("test");
+	demo2 = document.getElementById("demo2");
+	//alert(document.getElementById("test").scrollTop);
+	//alert(document.getElementById("myBtn10").offsetTop);
+	//alert(document.getElementById("myBtn10").clientHeight);
+	//alert(document.getElementById('ok').position());
+	//alert('--------');
+	testDivtop = testDiv.getBoundingClientRect().top;
+	//objtop = obj.getBoundingClientRect().top;
+	aaaatop = aaaa.getBoundingClientRect().top;
+	scrollPoint = testDiv.scrollTop + (aaaatop - testDivtop);
+	demo2.innerHTML = "testDiv.getBoundingClientRect().top: " + testDivtop + "<br>testDiv.scrollTop: " + testDiv.scrollTop + "<br>scrollPoint: " + scrollPoint+ "<br>aaaa.getBoundingClientRect().top;: " + aaaatop;
+	//if(objtop>testDivtop){
+	//	scrollPoint = testDiv.scrollTop - (objtop - testDivtop);
+	//}else{
+	//	scrollPoint = testDiv.scrollTop - (testDivtop - objtop);
+	//}
+    testDiv.scrollTop = scrollPoint;
+}
+</script>
+
+</body>
+</html>
