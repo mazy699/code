@@ -27,24 +27,6 @@ public class DeepCopy {
         WRAPPER_CLASS.add(Double.class);
     }
 
-    public static void main(String[] args) {
-        DeepCopy deepCopy = new DeepCopy();
-        List<DeepCopyFromDto> listDeepCopyFromDto;
-        List<DeepCopyToDto> listDeepCopyToDto = new ArrayList<>();
-        listDeepCopyFromDto = deepCopy.setDtoValue();
-        try {
-            for (DeepCopyFromDto deepCopyFromDto : listDeepCopyFromDto) {
-                listDeepCopyToDto.add((DeepCopyToDto) deepCopy.getDeepCopy(deepCopyFromDto, DeepCopyToDto.class.getDeclaredConstructor().newInstance()));
-            }
-            System.out.println("----------------------------------------------------From----------------------------------------------------");
-            deepCopy.printValue(listDeepCopyFromDto, DeepCopyFromDto.class);
-            System.out.println("-----------------------------------------------------To-----------------------------------------------------");
-            deepCopy.printValue(listDeepCopyToDto, DeepCopyToDto.class);
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-    }
-
     private static Object getValue(Object dto, String methodName) {
         return getValue(dto, methodName, null);
     }
@@ -91,7 +73,7 @@ public class DeepCopy {
         return builder.toString();
     }
 
-    private void printValue(Object object, Class<?> objClass) {
+    public void printValue(Object object, Class<?> objClass) {
         if (DeepCopyFromDto.class.equals(objClass)) {
             List<DeepCopyFromDto> listDeepCopyFromDto = (List<DeepCopyFromDto>) object;
             for (DeepCopyFromDto deepCopyFromDto : listDeepCopyFromDto) {
@@ -147,7 +129,7 @@ public class DeepCopy {
         }
     }
 
-    private List<DeepCopyFromDto> setDtoValue() {
+    public List<DeepCopyFromDto> setDtoValue() {
         List<DeepCopyFromDto> listDeepCopyFromDto = new ArrayList<>();
         for (int i = 0; i < LOOP; i++) {
             listDeepCopyFromDto.add(setDeepCopyFromDto(new DeepCopyFromDto(), i));
@@ -210,7 +192,7 @@ public class DeepCopy {
     }
 
     @SuppressWarnings("unchecked")
-    private Object getDeepCopy(Object from, Object to) throws ClassNotFoundException {
+    public Object getDeepCopy(Object from, Object to) throws ClassNotFoundException {
         if (from == null) {
             return null;
         }
@@ -250,7 +232,8 @@ public class DeepCopy {
         for (E dto : list) {
             try {
                 dataList.add((E) getDeepCopy(dto, dtoClass.getDeclaredConstructor().newInstance()));
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException |
+                     InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
